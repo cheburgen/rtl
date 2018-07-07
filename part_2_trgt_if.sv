@@ -192,15 +192,15 @@ end // always @ (posedge clk_i)
                    );
       string 			  s_me = "put_data()";
       
-      $display ("%s data= %h to %s.%s event_no = %0d data_payloads_db[%0d]",s_me,joined_sut_data[event_no], destination, event_name, event_no,I_if.get_index_by_name_signals_db(destination,event_name));
+      $display ("%s data= %h to %s.%s event_no = %0d data_payloads_db[%0d]",s_me,joined_sut_data[event_no], destination, event_name, event_no,T_if.get_index_by_name_signals_db(destination,event_name));
       
-      if (I_if.get_index_by_name_signals_db(destination,event_name) >= 0)
+      if (T_if.get_index_by_name_signals_db(destination,event_name) >= 0)
 	begin
-	   I_if.data_payloads_db[I_if.get_index_by_name_signals_db(destination,event_name)] = joined_sut_data[event_no];
-	   I_if.fringe_put ( destination, event_name);
+	   T_if.data_payloads_db[T_if.get_index_by_name_signals_db(destination,event_name)] = joined_sut_data[event_no];
+	   T_if.fringe_put ( destination, event_name);
 	   $display ("%s data = %h to %s clocked with %s event_no=%0d",s_me,joined_sut_data[event_no], destination, event_name, event_no );	           
 	end
-      else $display ("ERROR: %s data= %h to %s.%s event_no = %0d data_payloads_db[%0d]",s_me,joined_sut_data[event_no], destination, event_name, event_no,I_if.get_index_by_name_signals_db(destination,event_name));
+      else $display ("ERROR: %s data= %h to %s.%s event_no = %0d data_payloads_db[%0d]",s_me,joined_sut_data[event_no], destination, event_name, event_no,T_if.get_index_by_name_signals_db(destination,event_name));
    endtask : put_data
   
 //=============================================================================
