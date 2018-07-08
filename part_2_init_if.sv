@@ -154,11 +154,11 @@ $display ("------------INITIATOR PROCEEDS ------event name %s fsm_get %h ", even
            rcv_valid[event_no] <= 1;
            I_if.signals_db[event_no].data_valid <= 0;
            fsm_get <=  wait_event; 
-	   freeze_clk[4 - event_no] <= 0;
+	   freeze_clk[event_no] <= 0;
            $display( "------------ INITIATOR got data = %h from %s clocked with %s", joined_rcv_data[event_no], source, event_name);                                         
         end
         else  begin  
-	   freeze_clk[4 - event_no] <= 1;
+	   freeze_clk[event_no] <= 1;
            if (watchdog > 10000) begin
               $display ("watchdog error");
               $finish;
